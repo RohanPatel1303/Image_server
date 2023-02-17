@@ -12,11 +12,9 @@ const List<String> purposelist = <String>[
 ];
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
-
 class _LoginScreenState extends State<LoginScreen> {
   String? emailstring;
   String? passstring;
@@ -42,12 +40,12 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Container(
             height: MediaQuery.of(context).size.height * 0.3,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(bg_login), fit: BoxFit.fill)),
           ),
           Container(
-            child: Text(
+            child: const Text(
               "Login",
               style: TextStyle(fontSize: 32),
             ),
@@ -55,12 +53,12 @@ class _LoginScreenState extends State<LoginScreen> {
           Expanded(
               flex: 1,
               child: SingleChildScrollView(
-                padding: EdgeInsets.all(40),
+                padding: const EdgeInsets.all(40),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Enter Your Email Address:"),
-                    SizedBox(
+                    const Text("Enter Your Email Address:"),
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
@@ -68,16 +66,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         emailstring = text;
                         setState(() {});
                       },
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: "Email",
                           label: Text("Email"),
                           border: OutlineInputBorder()),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    Text("Enter Password:"),
-                    SizedBox(
+                    const Text("Enter Password:"),
+                    const SizedBox(
                       height: 20,
                     ),
                     TextFormField(
@@ -85,26 +83,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         passstring = text2;
                         setState(() {});
                       },
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           hintText: "Password",
                           label: Text("Password"),
                           border: OutlineInputBorder()),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Dropdownwidget(
                         itemList: itemList,
                         hint: "What Food You Like The Most",
                         onselect: setfood),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Dropdownwidget(
                         itemList: purposelist,
                         hint: "What's Your Purpose?",
                         onselect: purposecallback),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Row(
@@ -112,20 +110,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         ElevatedButton(
                             onPressed: () => {
-                              debugPrint(purpose),
-                                  Get.to(Details(), arguments: [
-                                    emailstring,
-                                    passstring,
-                                    food,
-                                    purpose
-                                  ])
+                                  Get.to(const Details(), arguments: [emailstring,passstring,food,purpose])
                                 },
-                            child: Text("Submit")),
+                            child: const Text("Submit")),
                       ],
                     )
                   ],
                 ),
-              ))
+              )
+          )
         ],
       ),
     );

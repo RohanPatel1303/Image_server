@@ -4,7 +4,6 @@ import 'package:login_industrystandard/Screens/ImagePicker/imageselect.dart';
 List <String> modal=["Email","Password","Favourite Time For Consuming Food","Purpose"];
 class Details extends StatefulWidget {
   const Details({Key? key}) : super(key: key);
-
   @override
   State<Details> createState() => _DetailsState();
 }
@@ -45,7 +44,6 @@ class _DetailsState extends State<Details> {
               ),
               ElevatedButton(onPressed: ()=>{
                 Get.to(const ImageSelector())
-
               }, child: const Text("Select Image"))
             ],
           ),
