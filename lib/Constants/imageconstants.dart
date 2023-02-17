@@ -1,0 +1,1 @@
+const String bg_login="asset/background.png";
