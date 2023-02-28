@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:login_industrystandard/Screens/LoginScreen/login.dart';
-
-import 'Screens/ImagePicker/singleimagepick.dart';
-
 void main() {
   runApp(const MyApp());
 }

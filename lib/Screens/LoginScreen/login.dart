@@ -20,6 +20,8 @@ class _LoginScreenState extends State<LoginScreen> {
   String? passstring;
   String? purpose;
   String? food;
+  final formkey=GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,74 +52,82 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(fontSize: 32),
             ),
           ),
-          Expanded(
-              flex: 1,
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(40),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Enter Your Email Address:"),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TextFormField(
-                      onChanged: (text) {
-                        emailstring = text;
-                        setState(() {});
-                      },
-                      decoration: const InputDecoration(
-                          hintText: "Email",
-                          label: Text("Email"),
-                          border: OutlineInputBorder()),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Text("Enter Password:"),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TextFormField(
-                      onChanged: (text2) {
-                        passstring = text2;
-                        setState(() {});
-                      },
-                      decoration: const InputDecoration(
-                          hintText: "Password",
-                          label: Text("Password"),
-                          border: OutlineInputBorder()),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Dropdownwidget(
-                        itemList: itemList,
-                        hint: "What Food You Like The Most",
-                        onselect: setfood),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Dropdownwidget(
-                        itemList: purposelist,
-                        hint: "What's Your Purpose?",
-                        onselect: purposecallback),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () => {
-                                  Get.to(const Details(), arguments: [emailstring,passstring,food,purpose])
-                                },
-                            child: const Text("Submit")),
-                      ],
-                    )
-                  ],
-                ),
-              )
+          Form(
+            key: formkey,
+            child: Expanded(
+                flex: 1,
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(40),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Enter Your Email Address:"),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        validator: (value){
+                          if(value==null||value.isEmpty)
+                           { return 'Please Enter The Details';}
+                          return null;
+                        },
+                        onChanged: (text) {
+                          emailstring = text;
+                          setState(() {});
+                        },
+                        decoration: const InputDecoration(
+                            hintText: "Email",
+                            label: Text("Email"),
+                            border: OutlineInputBorder()),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Text("Enter Password:"),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextFormField(
+                        onChanged: (text2) {
+                          passstring = text2;
+                          setState(() {});
+                        },
+                        decoration: const InputDecoration(
+                            hintText: "Password",
+                            label: Text("Password"),
+                            border: OutlineInputBorder()),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Dropdownwidget(
+                          itemList: itemList,
+                          hint: "What Food You Like The Most",
+                          onselect: setfood),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Dropdownwidget(
+                          itemList: purposelist,
+                          hint: "What's Your Purpose?",
+                          onselect: purposecallback),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                              onPressed: () => {
+                                    Get.to(const Details(), arguments: [emailstring,passstring,food,purpose])
+                                  },
+                              child: const Text("Submit")),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+            ),
           )
         ],
       ),
